@@ -1,5 +1,13 @@
 jQuery(document).ready(function($) {
 
+	// Accessibility setup
+	$('.su-spoiler-title').each(function(index){
+		var myIndex = index + 1;
+		$(this).attr('aria-controls', 'su_spoiler_'+myIndex);
+		$(this).next().attr('id', 'su_spoiler_'+myIndex);
+	});
+	$('.su-spoiler-closed .su-spoiler-title').attr('aria-expanded', 'false');
+	$('.su-spoiler-closed .su-spoiler-content').attr('hidden', true);
 	// Spoiler
 	$('body:not(.su-other-shortcodes-loaded)').on('click keypress', '.su-spoiler-title', function(e) {
 		var $title = $(this),
@@ -7,8 +15,17 @@ jQuery(document).ready(function($) {
 			bar = ($('#wpadminbar').length > 0) ? 28 : 0;
 		// Open/close spoiler
 		$spoiler.toggleClass('su-spoiler-closed');
+		if($spoiler.hasClass('su-spoiler-closed')){
+			$spoiler.children('.su-spoiler-title').attr( 'aria-expanded', 'false');
+			$spoiler.children('.su-spoiler-content').attr('hidden', true);
+		} else {
+			$spoiler.children('.su-spoiler-title').attr( 'aria-expanded', 'true');
+			$spoiler.children('.su-spoiler-content').attr('hidden', false);
+		}
 		// Close other spoilers in accordion
 		$spoiler.parent('.su-accordion').children('.su-spoiler').not($spoiler).addClass('su-spoiler-closed');
+		$spoiler.parent('.su-accordion').children('.su-spoiler').not($spoiler).children('.su-spoiler-title').attr( 'aria-expanded', 'false');
+		$spoiler.parent('.su-accordion').children('.su-spoiler').not($spoiler).children('.su-spoiler-content').attr( 'hidden', true);
 		// Scroll in spoiler in accordion
 		if ($(window).scrollTop() > $title.offset().top) $(window).scrollTop($title.offset().top - $title.height() - bar);
 		e.preventDefault();
