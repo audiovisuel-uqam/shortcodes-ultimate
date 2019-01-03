@@ -5,7 +5,7 @@ Donate link: https://paypal.me/anovladimir
 Tags: shortcode, toggle, columns, button, slider, video, map, visual, responsive, shortcodes, youtube, vimeo, audio, mp3, tabs, jquery, box, accordion, toggle, pullquote, list, image, gallery, navigation, permalink, feed, rss, members, membership, guests, carousel, icons, rtl, multilingual
 Requires at least: 3.5
 Requires PHP: 5.2.4
-Tested up to: 5.0.1
+Tested up to: 5.1
 Stable tag: trunk
 
 A comprehensive collection of visual components for your site
@@ -149,6 +149,13 @@ For help with premium add-ons, please [open new support ticket](https://getshort
 
 
 == Changelog ==
+
+= 5.2.1 =
+
+**Fixes**
+
+- Fixed inaccessible fields in media modal (while inserting Gallery/Slider/Carousel shortcodes)
+
 
 = 5.2.0 =
 
