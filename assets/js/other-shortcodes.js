@@ -2,9 +2,9 @@ jQuery(document).ready(function($) {
 
 	// Accessibility setup
 	$('.su-spoiler-title').each(function(index){
-		var myIndex = index + 1;
-		$(this).attr('aria-controls', 'su_spoiler_'+myIndex);
-		$(this).next().attr('id', 'su_spoiler_'+myIndex);
+		var suSpoilerIndex = index + 1;
+		$(this).attr('aria-controls', 'su_spoiler_'+suSpoilerIndex);
+		$(this).next().attr('id', 'su_spoiler_'+suSpoilerIndex);
 	});
 	$('.su-spoiler-closed .su-spoiler-title').attr('aria-expanded', 'false');
 	$('.su-spoiler-closed .su-spoiler-content').attr('hidden', true);
